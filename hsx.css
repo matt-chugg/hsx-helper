@@ -1,0 +1,5 @@
+
+.today_total {display:none; visibility:hidden;cursor: pointer;}
+.today_single {cursor: pointer;}
+table.showtotals .today_single {display:none; visibility:hidden;}
+table.showtotals .today_total {display:inline; visibility:visible;}
