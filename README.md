@@ -12,7 +12,8 @@ Adds additional functionality to HSX.com
     
   TRADE HISTORY
   
-    Coming soon
+    Remove failed transactions (fixes table layout)
+    Add link next to symbol link (| >) to search that symbol only
     
   ALL PAGES
   
