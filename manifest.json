@@ -5,7 +5,7 @@
     "description": "mskc",
     "content_scripts": [{
         "matches": ["*://www.hsx.com/*"],
-        "js": ["hsx.js"],
+        "js": ["jquery.js","hsx.js"],
         "css": ["hsx.css"],
         "run_at": "document_end"
     }],
