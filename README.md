@@ -14,6 +14,10 @@ Adds additional functionality to HSX.com
   
     Remove failed transactions (fixes table layout)
     Add link next to symbol link (| >) to search that symbol only
+
+  LEAGUE PAGE
+    
+    Add char count to comment box if present, indicate by colour >240 and >255
     
   ALL PAGES
   

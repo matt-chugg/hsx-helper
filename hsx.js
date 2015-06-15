@@ -56,20 +56,57 @@
         
         // bind click event to any value in the todays change colum to switch the value
         $hj(".today_single, today_total").live("click" ,function(){
-            jQuery(this).closest("table").toggleClass("showtotals");
+            $hj(this).closest("table").toggleClass("showtotals");
         });
     }
+    
+    
+    /*
+     * League Page
+     */
 
-
+    function doLeaguePage() {
+        // check for comment box
+        if($hj("textarea[name=comment]").length) {
+            // get first span and insert another after it
+            $hj("<span></span")
+                    .addClass("char_count")
+                    .attr("id","char_count")
+                    .insertAfter(jQuery("textarea[name=comment]").parent("td").find("span"));
+            
+            // add bind
+            $hj("textarea[name=comment]").live("input" ,function(){
+                // get text lendy and displauy it
+                $len = $hj("textarea[name=comment]").val().length;
+                $hj("#char_count").html($len);
+                                
+                // update color of character count
+                if($len > 240) {
+                    $hj("#char_count").addClass("close");
+                } else {
+                    $hj("#char_count").removeClass("close");
+                }
+                
+                if($len>255 ) {
+                    $hj("#char_count").addClass("over");
+                } else {
+                    $hj("#char_count").removeClass("over");
+                }
+                
+                
+                
+            });
+        }
+    }
 
     /*
      * TRADE HISTORY PAGE
      */
     function tradeHistory(isSpecific) {
-        jQuery("table tbody tr").each(function() {
+        $hj("table tbody tr").each(function() {
             // remove rows that are unsuccessfull
-            if(jQuery(this).find("td").eq(6).html().trim() !== "SUCCESS") {
-                jQuery(this).remove();
+            if($hj(this).find("td").eq(6).html().trim() !== "SUCCESS") {
+                $hj(this).remove();
             } else if(!isSpecific) {
                 // add link to show all of security
                 $cell = jQuery(this).find("td:nth-child(3)");
@@ -95,7 +132,9 @@
             tradeHistory(/[?&]symbol=/.test(location.href));
         }
         
-        
+        if(window.location.pathname === "/league/view.php" && /[?&]id=/.test(location.href)) {
+            doLeaguePage();
+        }
         
     }
 

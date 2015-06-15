@@ -3,3 +3,9 @@
 .today_single {cursor: pointer;}
 table.showtotals .today_single {display:none; visibility:hidden;}
 table.showtotals .today_total {display:inline; visibility:visible;}
+
+
+
+.char_count {color:green; padding-left:10px;}
+.char_count.close {color:orange;}
+.char_count.over {color:red;}
