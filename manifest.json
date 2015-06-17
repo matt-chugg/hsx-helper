@@ -1,11 +1,11 @@
 {
     "name": "HSX Helper",
-    "version": "1.2",
+    "version": "1.3",
     "manifest_version": 2,
     "description": "mskc",
     "content_scripts": [{
         "matches": ["*://www.hsx.com/*"],
-        "js": ["jquery.js","hsx.js"],
+        "js": ["jquery.js","util.js","hsx.js"],
         "css": ["hsx.css"],
         "run_at": "document_end"
     }],

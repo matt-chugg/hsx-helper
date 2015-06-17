@@ -7,13 +7,14 @@ Adds additional functionality to HSX.com
   
     View total daily change
     -----------------------
-  
+
     Click on any value in the "Today's Change" column to switch between change per share, and total change. 
     
   TRADE HISTORY
   
     Remove failed transactions (fixes table layout)
-    Add link next to symbol link (| >) to search that symbol only
+    Add link next to symbol link (| >) to search that security only
+    Add total on "view by security" page
 
   LEAGUE PAGE
     

@@ -1,24 +1,9 @@
-            var $hj = jQuery.noConflict();
-
-    // utility function to add commas in to numbers
-    function commaSeparateNumber(val){
-        val = val.toString().replace(/,/g, ''); //remove existing commas first
-        var valSplit = val.split('.'); //then separate decimals
-
-        while (/(\d+)(\d{3})/.test(valSplit[0].toString())){
-            valSplit[0] = valSplit[0].toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
-        }
-
-        if(valSplit.length === 2){ //if there were decimals
-            val = valSplit[0] + "." + valSplit[1]; //add decimals back
-        }else{
-            val = valSplit[0]; }
-        return val;
-    }
+    // might not be necesary, don't know if HSX has jquery should probably check
+    var $hj = jQuery.noConflict();
 
 
     /*
-     * PORT FOLIO PAGE
+     * PORTFOLIO PAGE
      */
     function doPortfolioPage() {
         // on portfolio page, make the todays change column clickable to show total instead of per share    
@@ -33,17 +18,15 @@
                 // find the span containing today's change
                 $today = $hj(this).find("td:nth-child(6) span").first();
                 
-                // get the change value
+                // get the change value and update total
                 $value = parseFloat($today.html().replace(/H\$/g , ""));
-                
-                // get total change
                 $total = $count * $value;
                 
                 //add class to existing span so wqe can see it later
                 $today.addClass("today_single");
                 
                 // add new span to table
-                jQuery("<span></span>")
+                $hj("<span></span>")
                         .html("H$" + commaSeparateNumber($total.toFixed(2)))
                         .addClass($today.attr("class"))
                         .addClass("today_total")
@@ -72,11 +55,11 @@
             $hj("<span></span")
                     .addClass("char_count")
                     .attr("id","char_count")
-                    .insertAfter(jQuery("textarea[name=comment]").parent("td").find("span"));
+                    .insertAfter($hj("textarea[name=comment]").parent("td").find("span"));
             
             // add bind
             $hj("textarea[name=comment]").live("input" ,function(){
-                // get text lendy and displauy it
+                // get text length and displauy it
                 $len = $hj("textarea[name=comment]").val().length;
                 $hj("#char_count").html($len);
                                 
@@ -103,18 +86,51 @@
      * TRADE HISTORY PAGE
      */
     function tradeHistory(isSpecific) {
+        $total = 0;
         $hj("table tbody tr").each(function() {
             // remove rows that are unsuccessfull
-            if($hj(this).find("td").eq(6).html().trim() !== "SUCCESS") {
+            $tr = $hj(this);
+            if($tr.find("td").eq(6).html().trim() !== "SUCCESS") {
                 $hj(this).remove();
-            } else if(!isSpecific) {
-                // add link to show all of security
-                $cell = jQuery(this).find("td:nth-child(3)");
-                $symbol = $cell.find("a").html();
-                $cell.html($cell.html() + "&nbsp;|&nbsp;<a href=\"http://www.hsx.com/portfolio/history.php?symbol=" + $symbol + "\">&gt;<a/>");
+            } else {
+                if(!isSpecific) {
+                    // add link to show all of security
+                    $cell = $tr.find("td:nth-child(3)");
+                    $symbol = $cell.find("a").html();
+                    
+                    // create the link
+                    $l = $hj("<a></a>")
+                            .attr("href","http://www.hsx.com/portfolio/history.php?symbol=" + $symbol)
+                            .addClass("searchicon")
+                            .html("&nbsp; >>");
+                    
+                    // add the link to the cell next to the symbol
+                    $cell.append($l);
+                } else {
+                    // update total
+                    $v = parseFloat($tr.find("td:nth-child(6)").attr("sorttable_customkey"));
+                    $total = $total + $v;
+                }
+                
             }
         }); // row loop
+        
+        // add total on symbol specific pages.
+        if(isSpecific) {
+            // create total span with color and symobol
+            $t = $hj("<span></span>")
+                    .html("H$" + commaSeparateNumber($total.toFixed(2)).replace(/\-/g , ""))
+                    .addClass("htotal")
+                    .addClass($total > 0 ? "up" : "")
+                    .addClass($total < 0 ? "down" : "");
+            // add total to first h3 in page
+            $hj("h3").first().append($t);            
+        }
+        
     }
+
+
+
 
 
     /*
@@ -132,6 +148,7 @@
             tradeHistory(/[?&]symbol=/.test(location.href));
         }
         
+        // league page
         if(window.location.pathname === "/league/view.php" && /[?&]id=/.test(location.href)) {
             doLeaguePage();
         }

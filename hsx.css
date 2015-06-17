@@ -9,3 +9,9 @@ table.showtotals .today_total {display:inline; visibility:visible;}
 .char_count {color:green; padding-left:10px;}
 .char_count.close {color:orange;}
 .char_count.over {color:red;}
+
+span.htotal {
+    padding-left: 10px; margin-left:10px; display:inline-block;
+      font-size: 1.2em !important; line-height: 1.5 !important;
+}
+
