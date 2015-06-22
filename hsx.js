@@ -87,11 +87,12 @@
      */
     function tradeHistory(isSpecific) {
         $total = 0;
+        // loop through all rows in the table
         $hj("table tbody tr").each(function() {
-            // remove rows that are unsuccessfull
+            // add class to failed transaction rows
             $tr = $hj(this);
             if($tr.find("td").eq(6).html().trim() !== "SUCCESS") {
-                $hj(this).remove();
+                $hj(this).addClass("hh_failed-transaction");
             } else {
                 if(!isSpecific) {
                     // add link to show all of security
@@ -101,7 +102,6 @@
                     // create the link
                     $l = $hj("<a></a>")
                             .attr("href","http://www.hsx.com/portfolio/history.php?symbol=" + $symbol)
-                            .addClass("searchicon")
                             .html("&nbsp; >>");
                     
                     // add the link to the cell next to the symbol
@@ -115,12 +115,29 @@
             }
         }); // row loop
         
+        
+        // set initally table to not show fialed transactions
+        $hj("table").addClass("hh_hide-failed-transactions");
+        // create toggle button
+        $hhToggleTransactionsButton = $hj("<span></span>")
+                .addClass("hh_toggle-failed-transactions")
+                .html("Toggle failed transactions");
+        // add toggle button to page
+        $hj(".table_label").append($hhToggleTransactionsButton);
+        // add bind to toggle button
+        $hj(".hh_toggle-failed-transactions").live("click",function(){
+            $hj(this).closest(".whitebox_content").find("table").toggleClass("hh_hide-failed-transactions");
+        });
+        
+        
+        
+        
         // add total on symbol specific pages.
         if(isSpecific) {
             // create total span with color and symobol
             $t = $hj("<span></span>")
                     .html("H$" + commaSeparateNumber($total.toFixed(2)).replace(/\-/g , ""))
-                    .addClass("htotal")
+                    .addClass("hh_transaction-total")
                     .addClass($total > 0 ? "up" : "")
                     .addClass($total < 0 ? "down" : "");
             // add total to first h3 in page

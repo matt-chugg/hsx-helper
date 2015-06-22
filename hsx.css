@@ -10,8 +10,18 @@ table.showtotals .today_total {display:inline; visibility:visible;}
 .char_count.close {color:orange;}
 .char_count.over {color:red;}
 
-span.htotal {
+
+
+/* transaction total span */
+span.hh_transaction-total {
     padding-left: 10px; margin-left:10px; display:inline-block;
       font-size: 1.2em !important; line-height: 1.5 !important;
 }
 
+/* hide and show transaction on history page */
+span.hh_toggle-failed-transactions {
+    display:block; color:blue; text-decoration: underline; cursor: pointer !important;
+}
+table.hh_hide-failed-transactions tr.hh_failed-transaction {
+    display:none !Important; visibility:hidden !Important;
+}
