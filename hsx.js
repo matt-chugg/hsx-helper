@@ -11,6 +11,11 @@
             
             $table = $hj(this);
             
+            // skip table it if only had one or none rows
+            if($table.find("tbody tr").length < 2) {
+                return;
+            };
+            
             $table.find("tbody tr").each(function() {
                 // get number of shares
                 $count = parseInt($hj(this).find("td:nth-child(2)").html().replace(/,/g , ""));
@@ -86,13 +91,13 @@
      * TRADE HISTORY PAGE
      */
     function tradeHistory(isSpecific) {
-        $total = 0;
+        $total = 0; $hasFailedTransactions = false;
         // loop through all rows in the table
         $hj("table tbody tr").each(function() {
             // add class to failed transaction rows
             $tr = $hj(this);
             if($tr.find("td").eq(6).html().trim() !== "SUCCESS") {
-                $hj(this).addClass("hh_failed-transaction");
+                $hj(this).addClass("hh_failed-transaction"); $hasFailedTransactions = true;
             } else {
                 if(!isSpecific) {
                     // add link to show all of security
