@@ -25,3 +25,12 @@ span.hh_toggle-failed-transactions {
 table.hh_hide-failed-transactions tr.hh_failed-transaction {
     display:none !Important; visibility:hidden !Important;
 }
+
+/* prevent wrap of symbol link */
+table.hh_hide-failed-transactions tr td:nth-child(3) {
+    white-space: nowrap;
+}
+
+
+/* row highligh */
+tbody tr:hover {background-color: #FCF8E3 !important;}

@@ -120,20 +120,21 @@
             }
         }); // row loop
         
-        
-        // set initally table to not show fialed transactions
-        $hj("table").addClass("hh_hide-failed-transactions");
-        // create toggle button
-        $hhToggleTransactionsButton = $hj("<span></span>")
-                .addClass("hh_toggle-failed-transactions")
-                .html("Toggle failed transactions");
-        // add toggle button to page
-        $hj(".table_label").append($hhToggleTransactionsButton);
-        // add bind to toggle button
-        $hj(".hh_toggle-failed-transactions").live("click",function(){
-            $hj(this).closest(".whitebox_content").find("table").toggleClass("hh_hide-failed-transactions");
-        });
-        
+        // if we have failed transactions in the table
+        if($hasFailedTransactions) {
+            // set initally table to not show fialed transactions
+            $hj("table").addClass("hh_hide-failed-transactions");
+            // create toggle button
+            $hhToggleTransactionsButton = $hj("<span></span>")
+                    .addClass("hh_toggle-failed-transactions")
+                    .html("Toggle failed transactions");
+            // add toggle button to page
+            $hj(".table_label").append($hhToggleTransactionsButton);
+            // add bind to toggle button
+            $hj(".hh_toggle-failed-transactions").live("click",function(){
+                $hj(this).closest(".whitebox_content").find("table").toggleClass("hh_hide-failed-transactions");
+            });
+        }
         
         
         
