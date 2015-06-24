@@ -12,7 +12,7 @@ Adds additional functionality to HSX.com
     
   TRADE HISTORY
   
-    Remove failed transactions (fixes table layout)
+    Ability to toggle failed transactions
     Add link next to symbol link (| >) to search that security only
     Add total on "view by security" page
 
