@@ -26,6 +26,8 @@ Adds additional functionality to HSX.com
     Note, this is not representative of YOUR total change, just how many shares you own, multiplied by value.
 
 
+  SCREENSHOTS
+
 
 ![](/screenshots/4.png)
 ![](/screenshots/2.png)
