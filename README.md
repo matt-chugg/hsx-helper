@@ -9,9 +9,6 @@ Adds additional functionality to HSX.com
     Add link next to symbol link (>>) to search that security only
     Add sum value of transactions on "view by security" page
 
-![alt tag](/screenshots/4.png)
-![alt tag](/screenshots/2.png)
-
   LEAGUE PAGE
     
     Add character count to comment box if present, indicate by colour >240 and >255
@@ -27,3 +24,10 @@ Adds additional functionality to HSX.com
 
     Click on any value in the "Today's Change" column to switch between change per share, and total change. 
     Note, this is not representative of YOUR total change, just how many shares you own, multiplied by value.
+
+
+
+![](/screenshots/4.png)
+![](/screenshots/2.png)
+![](/screenshots/5.png)
+![](/screenshots/7.png)
