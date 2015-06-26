@@ -85,6 +85,32 @@
                 
             });
         }
+        
+        
+        // add jumparound nav
+        $hhLeagueNavigation = $hj("<span><a rel=\"top\">top</a><span rel=\"top\">&nbsp;|&nbsp;</span><a rel=\"standings\">standings</a><span rel=\"standings\">&nbsp;|&nbsp;</span><a rel=\"comments\">comments</a><span rel=\"comments\">&nbsp;|&nbsp;</span><a rel=\"addcomment\">add&nbsp;comment</a></span>")
+                .addClass("hh_league-navigation");
+        
+        
+        $hj(".eight.columns").find("h1,h3").each(function(i,e){
+            $hj(this).addClass("hh_section-" + i);
+        }).append($hhLeagueNavigation);
+           
+        
+
+        // bind
+        $hj(".hh_league-navigation a[rel]").live("click",function(){
+            $v = $hj(this).attr("rel");
+            $s = 0;
+            if($v === "standings") {$s = $hj(".hh_section-1").offset().top -10;}
+            if($v === "comments") {$s = $hj(".hh_section-2").offset().top -10 ;}
+            if($v === "addcomment") {$s = $hj(".hh_section-3").offset().top -10;}
+            console.log($s);
+            
+            $hj('html, body').animate({scrollTop: $s}, 200);
+            
+        });
+        
     }
 
     /*

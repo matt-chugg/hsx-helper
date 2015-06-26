@@ -32,5 +32,15 @@ table.hh_hide-failed-transactions tr td:nth-child(3) {
 }
 
 
+
+.hh_league-navigation {font-size:14px;  float:right;}
+.hh_league-navigation a {color:blue; text-decoration:none; font-weight:normal; cursor:pointer;}
+h1 .hh_league-navigation {line-height:28px; height:28px; display:block;}
+h3 .hh_league-navigation {text-transform:lowercase;}
+
+
+
+
+
 /* row highligh */
 tbody tr:hover {background-color: #FCF8E3 !important;}

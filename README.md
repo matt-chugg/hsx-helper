@@ -12,7 +12,8 @@ Adds additional functionality to HSX.com
   LEAGUE PAGE
     
     Add character count to comment box if present, indicate by colour >240 and >255
-    
+    Add "jump navigation" to top, standings, comments and add comment, 
+
   ALL PAGES
   
     Add table full-row highlighting on mouseover cell, easy to see which security you are clicking "TRADE" for.
@@ -30,6 +31,11 @@ Adds additional functionality to HSX.com
 
 
 ![](/screenshots/4.png)
+
 ![](/screenshots/2.png)
+
 ![](/screenshots/5.png)
+
 ![](/screenshots/7.png)
+
+![](/screenshots/8.png)
